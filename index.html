@@ -26,16 +26,12 @@ color:white;
 overflow:hidden;
 }
 
-/* MATRIX FUNDO */
-
 canvas{
 position:fixed;
 top:0;
 left:0;
 z-index:-1;
 }
-
-/* container */
 
 .container{
 width:90%;
@@ -48,8 +44,6 @@ padding:30px;
 box-shadow:0 0 40px rgba(255,0,0,0.3);
 border:1px solid #222;
 }
-
-/* logo */
 
 .logo{
 width:110px;
@@ -77,8 +71,6 @@ animation:pulse 2s infinite;
 font-size:45px;
 }
 
-/* titulo */
-
 h1{
 font-size:32px;
 letter-spacing:4px;
@@ -91,8 +83,6 @@ text-shadow:0 0 15px red;
 color:#aaa;
 margin-bottom:30px;
 }
-
-/* links */
 
 .links{
 display:flex;
@@ -164,8 +154,6 @@ color:#777;
 .footer span{
 color:red;
 }
-
-/* BOTÃO FLUTUANTE */
 
 .float-container{
 position:fixed;
@@ -241,27 +229,17 @@ transition:.3s;
 transform:rotate(90deg) scale(1.1);
 }
 
-/* glitch efeito */
-
-h1:hover{
-animation:glitch .5s infinite;
-}
-
-@keyframes glitch{
-0%{transform:translate(0)}
-20%{transform:translate(-2px,2px)}
-40%{transform:translate(2px,-2px)}
-60%{transform:translate(-2px,2px)}
-80%{transform:translate(2px,-2px)}
-100%{transform:translate(0)}
-}
-
 </style>
 </head>
 
 <body>
 
 <canvas id="matrix"></canvas>
+
+<!-- SOM -->
+<audio id="clickSound">
+<source src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3" type="audio/mpeg">
+</audio>
 
 <div class="container">
 
@@ -274,7 +252,7 @@ animation:glitch .5s infinite;
 
 <div class="links">
 
-<a class="link" href="https://www.youtube.com/@bruxomodzofc" target="_blank">
+<a class="link" onclick="playSound()" href="https://www.youtube.com/@bruxomodzofc" target="_blank">
 <div class="left">
 <div class="icon"><i class="fa-brands fa-youtube"></i></div>
 <div>
@@ -285,7 +263,7 @@ Canal YouTube<br>
 <i class="fa-solid fa-arrow-right"></i>
 </a>
 
-<a class="link" href="https://www.youtube.com/@isacmodstv" target="_blank">
+<a class="link" onclick="playSound()" href="https://www.youtube.com/@isacmodstv" target="_blank">
 <div class="left">
 <div class="icon"><i class="fa-solid fa-tv"></i></div>
 <div>
@@ -296,7 +274,7 @@ ISAC MODS TV<br>
 <i class="fa-solid fa-arrow-right"></i>
 </a>
 
-<a class="link" href="https://whatsapp.com/channel/0029VbCNHfs2kNFyhlqfT72X" target="_blank">
+<a class="link" onclick="playSound()" href="https://whatsapp.com/channel/0029VbCNHfs2kNFyhlqfT72X" target="_blank">
 <div class="left">
 <div class="icon"><i class="fa-brands fa-whatsapp"></i></div>
 <div>
@@ -307,7 +285,7 @@ Comunidade BRUXO MODZ<br>
 <i class="fa-solid fa-arrow-right"></i>
 </a>
 
-<a class="link" href="https://chat.whatsapp.com/Bye9CWnyog5CggS0y6RxXA?mode=gi_t" target="_blank">
+<a class="link" onclick="playSound()" href="https://chat.whatsapp.com/Bye9CWnyog5CggS0y6RxXA?mode=gi_t" target="_blank">
 <div class="left">
 <div class="icon"><i class="fa-solid fa-users"></i></div>
 <div>
@@ -326,29 +304,33 @@ Criado por <span>BRUXO MODZ</span>
 
 </div>
 
-<!-- MENU FLUTUANTE -->
-
 <div class="float-container">
 
 <div class="float-menu" id="menu">
 
-<a href="https://t.me/RATEXMODS" target="_blank" class="float-item telegram">
+<a onclick="playSound()" href="https://t.me/RATEXMODS" target="_blank" class="float-item telegram">
 <i class="fa-brands fa-telegram"></i> Telegram
 </a>
 
-<a href="https://instagram.com/bruxomodz" target="_blank" class="float-item instagram">
+<a onclick="playSound()" href="https://instagram.com/bruxomodz" target="_blank" class="float-item instagram">
 <i class="fa-brands fa-instagram"></i> Instagram
 </a>
 
 </div>
 
-<div class="float-btn" onclick="toggleMenu()">
+<div class="float-btn" onclick="toggleMenu();playSound();">
 <i class="fa-solid fa-plus"></i>
 </div>
 
 </div>
 
 <script>
+
+/* SOM */
+
+function playSound(){
+document.getElementById("clickSound").play();
+}
 
 /* MENU */
 
@@ -361,7 +343,7 @@ menu.style.display="flex";
 }
 }
 
-/* MATRIX FUNDO */
+/* MATRIX */
 
 const canvas=document.getElementById("matrix");
 const ctx=canvas.getContext("2d");
