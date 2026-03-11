@@ -61,8 +61,6 @@ left:0;
 z-index:-1;
 }
 
-/* container */
-
 .container{
 width:90%;
 max-width:420px;
@@ -74,8 +72,6 @@ padding:30px;
 box-shadow:0 0 40px rgba(255,0,0,0.3);
 border:1px solid #222;
 }
-
-/* logo */
 
 .logo{
 width:110px;
@@ -234,14 +230,10 @@ box-shadow:0 0 25px red;
 
 <body>
 
-<!-- ALERTA HACKER -->
-
 <div class="hacker-alert" id="alert">
 <h2>⚠ ACESSO AUTORIZADO</h2>
 <p>Conectando ao servidor BRUXO MODZ...</p>
 </div>
-
-<!-- SOM HACKER -->
 
 <audio id="hackSound">
 <source src="https://assets.mixkit.co/active_storage/sfx/2588/2588-preview.mp3" type="audio/mpeg">
@@ -282,6 +274,17 @@ ISAC MODS TV<br>
 <i class="fa-solid fa-arrow-right"></i>
 </a>
 
+<a class="link" href="https://youtube.com/@fantasma_modz2?si=9wWO3moFrudu0uuG" target="_blank">
+<div class="left">
+<div class="icon"><i class="fa-brands fa-youtube"></i></div>
+<div>
+Fantasma MODZ<br>
+<span>Canal Fantasma</span>
+</div>
+</div>
+<i class="fa-solid fa-arrow-right"></i>
+</a>
+
 <a class="link" href="https://whatsapp.com/channel/0029VbCNHfs2kNFyhlqfT72X" target="_blank">
 <div class="left">
 <div class="icon"><i class="fa-brands fa-whatsapp"></i></div>
@@ -312,29 +315,7 @@ Criado por <span>BRUXO MODZ</span>
 
 </div>
 
-<div class="float-container">
-
-<div class="float-menu" id="menu">
-
-<a href="https://t.me/RATEXMODS" target="_blank" class="float-item telegram">
-<i class="fa-brands fa-telegram"></i> Telegram
-</a>
-
-<a href="https://instagram.com/bruxomodz" target="_blank" class="float-item instagram">
-<i class="fa-brands fa-instagram"></i> Instagram
-</a>
-
-</div>
-
-<div class="float-btn" onclick="toggleMenu()">
-<i class="fa-solid fa-plus"></i>
-</div>
-
-</div>
-
 <script>
-
-/* ALERTA HACKER */
 
 window.onload=function(){
 
@@ -345,21 +326,6 @@ document.getElementById("alert").style.display="none";
 },3000);
 
 }
-
-/* MENU */
-
-function toggleMenu(){
-let menu=document.getElementById("menu");
-
-if(menu.style.display==="flex"){
-menu.style.display="none";
-}else{
-menu.style.display="flex";
-}
-
-}
-
-/* MATRIX */
 
 const canvas=document.getElementById("matrix");
 const ctx=canvas.getContext("2d");
