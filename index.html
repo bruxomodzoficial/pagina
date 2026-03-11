@@ -130,6 +130,53 @@ color:#777;
 color:red;
 }
 
+/* BOTAO FLUTUANTE */
+
+.float-btn{
+position:fixed;
+bottom:25px;
+right:25px;
+width:60px;
+height:60px;
+border-radius:50%;
+background:red;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+cursor:pointer;
+box-shadow:0 0 15px red;
+z-index:100;
+}
+
+.float-menu{
+position:fixed;
+bottom:100px;
+right:25px;
+display:none;
+flex-direction:column;
+gap:10px;
+}
+
+.float-menu a{
+background:#111;
+color:white;
+text-decoration:none;
+padding:12px 15px;
+border-radius:10px;
+display:flex;
+align-items:center;
+gap:10px;
+border:1px solid #333;
+transition:0.3s;
+}
+
+.float-menu a:hover{
+background:#1f1f1f;
+border:1px solid red;
+box-shadow:0 0 10px red;
+}
+
 </style>
 </head>
 
@@ -197,6 +244,42 @@ Criado por <span>BRUXO MODZ</span>
 </div>
 
 </div>
+
+<!-- MENU FLUTUANTE -->
+
+<div class="float-menu" id="menu">
+
+<a href="https://t.me/RATEXMODS" target="_blank">
+<i class="fa-brands fa-telegram"></i>
+Grupo Telegram
+</a>
+
+<a href="https://instagram.com/bruxomodz" target="_blank">
+<i class="fa-brands fa-instagram"></i>
+Instagram
+</a>
+
+</div>
+
+<div class="float-btn" onclick="toggleMenu()">
+<i class="fa-solid fa-plus"></i>
+</div>
+
+<script>
+
+function toggleMenu(){
+
+let menu = document.getElementById("menu");
+
+if(menu.style.display === "flex"){
+menu.style.display = "none";
+}else{
+menu.style.display = "flex";
+}
+
+}
+
+</script>
 
 </body>
 </html>
