@@ -16,6 +16,34 @@ padding:0;
 font-family:Arial, Helvetica, sans-serif;
 }
 
+/* ALERTA HACKER */
+
+.hacker-alert{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+color:#00ff00;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+font-family:monospace;
+z-index:9999;
+}
+
+.hacker-alert h2{
+font-size:28px;
+margin-bottom:10px;
+}
+
+.hacker-alert p{
+font-size:16px;
+opacity:0.8;
+}
+
 body{
 height:100vh;
 display:flex;
@@ -33,6 +61,8 @@ left:0;
 z-index:-1;
 }
 
+/* container */
+
 .container{
 width:90%;
 max-width:420px;
@@ -44,6 +74,8 @@ padding:30px;
 box-shadow:0 0 40px rgba(255,0,0,0.3);
 border:1px solid #222;
 }
+
+/* logo */
 
 .logo{
 width:110px;
@@ -102,23 +134,6 @@ transition:.3s;
 text-decoration:none;
 color:white;
 border:1px solid #222;
-position:relative;
-overflow:hidden;
-}
-
-.link::before{
-content:"";
-position:absolute;
-left:-100%;
-top:0;
-width:100%;
-height:100%;
-background:linear-gradient(90deg,transparent,rgba(255,0,0,.4),transparent);
-transition:.5s;
-}
-
-.link:hover::before{
-left:100%;
 }
 
 .link:hover{
@@ -155,6 +170,8 @@ color:#777;
 color:red;
 }
 
+/* BOTÃO FLUTUANTE */
+
 .float-container{
 position:fixed;
 bottom:25px;
@@ -170,18 +187,6 @@ z-index:999;
 display:none;
 flex-direction:column;
 gap:10px;
-animation:menuOpen .3s ease;
-}
-
-@keyframes menuOpen{
-from{
-opacity:0;
-transform:translateY(20px) scale(.9);
-}
-to{
-opacity:1;
-transform:translateY(0) scale(1);
-}
 }
 
 .float-item{
@@ -222,11 +227,6 @@ justify-content:center;
 font-size:30px;
 cursor:pointer;
 box-shadow:0 0 25px red;
-transition:.3s;
-}
-
-.float-btn:hover{
-transform:rotate(90deg) scale(1.1);
 }
 
 </style>
@@ -234,12 +234,20 @@ transform:rotate(90deg) scale(1.1);
 
 <body>
 
-<canvas id="matrix"></canvas>
+<!-- ALERTA HACKER -->
 
-<!-- SOM -->
-<audio id="clickSound">
-<source src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3" type="audio/mpeg">
+<div class="hacker-alert" id="alert">
+<h2>⚠ ACESSO AUTORIZADO</h2>
+<p>Conectando ao servidor BRUXO MODZ...</p>
+</div>
+
+<!-- SOM HACKER -->
+
+<audio id="hackSound">
+<source src="https://assets.mixkit.co/active_storage/sfx/2588/2588-preview.mp3" type="audio/mpeg">
 </audio>
+
+<canvas id="matrix"></canvas>
 
 <div class="container">
 
@@ -252,7 +260,7 @@ transform:rotate(90deg) scale(1.1);
 
 <div class="links">
 
-<a class="link" onclick="playSound()" href="https://www.youtube.com/@bruxomodzofc" target="_blank">
+<a class="link" href="https://www.youtube.com/@bruxomodzofc" target="_blank">
 <div class="left">
 <div class="icon"><i class="fa-brands fa-youtube"></i></div>
 <div>
@@ -263,7 +271,7 @@ Canal YouTube<br>
 <i class="fa-solid fa-arrow-right"></i>
 </a>
 
-<a class="link" onclick="playSound()" href="https://www.youtube.com/@isacmodstv" target="_blank">
+<a class="link" href="https://www.youtube.com/@isacmodstv" target="_blank">
 <div class="left">
 <div class="icon"><i class="fa-solid fa-tv"></i></div>
 <div>
@@ -274,7 +282,7 @@ ISAC MODS TV<br>
 <i class="fa-solid fa-arrow-right"></i>
 </a>
 
-<a class="link" onclick="playSound()" href="https://whatsapp.com/channel/0029VbCNHfs2kNFyhlqfT72X" target="_blank">
+<a class="link" href="https://whatsapp.com/channel/0029VbCNHfs2kNFyhlqfT72X" target="_blank">
 <div class="left">
 <div class="icon"><i class="fa-brands fa-whatsapp"></i></div>
 <div>
@@ -285,7 +293,7 @@ Comunidade BRUXO MODZ<br>
 <i class="fa-solid fa-arrow-right"></i>
 </a>
 
-<a class="link" onclick="playSound()" href="https://chat.whatsapp.com/Bye9CWnyog5CggS0y6RxXA?mode=gi_t" target="_blank">
+<a class="link" href="https://chat.whatsapp.com/Bye9CWnyog5CggS0y6RxXA?mode=gi_t" target="_blank">
 <div class="left">
 <div class="icon"><i class="fa-solid fa-users"></i></div>
 <div>
@@ -308,17 +316,17 @@ Criado por <span>BRUXO MODZ</span>
 
 <div class="float-menu" id="menu">
 
-<a onclick="playSound()" href="https://t.me/RATEXMODS" target="_blank" class="float-item telegram">
+<a href="https://t.me/RATEXMODS" target="_blank" class="float-item telegram">
 <i class="fa-brands fa-telegram"></i> Telegram
 </a>
 
-<a onclick="playSound()" href="https://instagram.com/bruxomodz" target="_blank" class="float-item instagram">
+<a href="https://instagram.com/bruxomodz" target="_blank" class="float-item instagram">
 <i class="fa-brands fa-instagram"></i> Instagram
 </a>
 
 </div>
 
-<div class="float-btn" onclick="toggleMenu();playSound();">
+<div class="float-btn" onclick="toggleMenu()">
 <i class="fa-solid fa-plus"></i>
 </div>
 
@@ -326,21 +334,29 @@ Criado por <span>BRUXO MODZ</span>
 
 <script>
 
-/* SOM */
+/* ALERTA HACKER */
 
-function playSound(){
-document.getElementById("clickSound").play();
+window.onload=function(){
+
+document.getElementById("hackSound").play();
+
+setTimeout(function(){
+document.getElementById("alert").style.display="none";
+},3000);
+
 }
 
 /* MENU */
 
 function toggleMenu(){
 let menu=document.getElementById("menu");
+
 if(menu.style.display==="flex"){
 menu.style.display="none";
 }else{
 menu.style.display="flex";
 }
+
 }
 
 /* MATRIX */
