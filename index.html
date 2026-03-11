@@ -16,34 +16,6 @@ padding:0;
 font-family:Arial, Helvetica, sans-serif;
 }
 
-/* ALERTA HACKER */
-
-.hacker-alert{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:black;
-color:#00ff00;
-display:flex;
-align-items:center;
-justify-content:center;
-flex-direction:column;
-font-family:monospace;
-z-index:9999;
-}
-
-.hacker-alert h2{
-font-size:28px;
-margin-bottom:10px;
-}
-
-.hacker-alert p{
-font-size:16px;
-opacity:0.8;
-}
-
 body{
 height:100vh;
 display:flex;
@@ -61,12 +33,31 @@ left:0;
 z-index:-1;
 }
 
+/* ALERTA */
+
+.hacker-alert{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+color:#00ff00;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+font-family:monospace;
+z-index:9999;
+}
+
+/* CONTAINER */
+
 .container{
 width:90%;
 max-width:420px;
 text-align:center;
 background:rgba(10,10,10,0.85);
-backdrop-filter:blur(10px);
 border-radius:20px;
 padding:30px;
 box-shadow:0 0 40px rgba(255,0,0,0.3);
@@ -86,17 +77,6 @@ font-size:40px;
 color:red;
 margin-bottom:18px;
 box-shadow:0 0 25px red;
-animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-0%{box-shadow:0 0 10px red}
-50%{box-shadow:0 0 30px red}
-100%{box-shadow:0 0 10px red}
-}
-
-.logo i{
-font-size:45px;
 }
 
 h1{
@@ -104,7 +84,6 @@ font-size:32px;
 letter-spacing:4px;
 margin-bottom:6px;
 color:#ff0000;
-text-shadow:0 0 15px red;
 }
 
 .user{
@@ -134,26 +113,20 @@ border:1px solid #222;
 
 .link:hover{
 transform:scale(1.06);
-background:#1a1a1a;
 border:1px solid red;
 box-shadow:0 0 20px red;
-}
-
-.link span{
-font-size:13px;
-color:#bbb;
-}
-
-.icon{
-font-size:22px;
-width:35px;
-text-align:center;
 }
 
 .left{
 display:flex;
 align-items:center;
 gap:12px;
+}
+
+.icon{
+font-size:22px;
+width:35px;
+text-align:center;
 }
 
 .footer{
@@ -166,7 +139,7 @@ color:#777;
 color:red;
 }
 
-/* BOTÃO FLUTUANTE */
+/* MENU FLUTUANTE */
 
 .float-container{
 position:fixed;
@@ -196,27 +169,13 @@ text-decoration:none;
 font-size:14px;
 background:#111;
 border:1px solid #333;
-transition:.3s;
-}
-
-.float-item:hover{
-transform:scale(1.05);
-box-shadow:0 0 15px red;
-}
-
-.telegram{
-background:#0088cc;
-}
-
-.instagram{
-background:linear-gradient(45deg,#ff0066,#ff9900,#cc00ff);
 }
 
 .float-btn{
 width:65px;
 height:65px;
 border-radius:50%;
-background:linear-gradient(45deg,#ff0000,#990000);
+background:red;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -224,6 +183,9 @@ font-size:30px;
 cursor:pointer;
 box-shadow:0 0 25px red;
 }
+
+.telegram{background:#0088cc;}
+.instagram{background:#e1306c;}
 
 </style>
 </head>
@@ -235,8 +197,14 @@ box-shadow:0 0 25px red;
 <p>Conectando ao servidor BRUXO MODZ...</p>
 </div>
 
-<audio id="hackSound">
-<source src="https://assets.mixkit.co/active_storage/sfx/2588/2588-preview.mp3" type="audio/mpeg">
+<!-- SOM -->
+
+<audio id="enterSound">
+<source src="https://assets.mixkit.co/active_storage/sfx/2588/2588-preview.mp3">
+</audio>
+
+<audio id="clickSound">
+<source src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3">
 </audio>
 
 <canvas id="matrix"></canvas>
@@ -252,7 +220,7 @@ box-shadow:0 0 25px red;
 
 <div class="links">
 
-<a class="link" href="https://www.youtube.com/@bruxomodzofc" target="_blank">
+<a class="link" onclick="clickSound()" href="https://www.youtube.com/@bruxomodzofc" target="_blank">
 <div class="left">
 <div class="icon"><i class="fa-brands fa-youtube"></i></div>
 <div>
@@ -263,45 +231,41 @@ Canal YouTube<br>
 <i class="fa-solid fa-arrow-right"></i>
 </a>
 
-<a class="link" href="https://www.youtube.com/@isacmodstv" target="_blank">
+<a class="link" onclick="clickSound()" href="https://www.youtube.com/@isacmodstv" target="_blank">
 <div class="left">
 <div class="icon"><i class="fa-solid fa-tv"></i></div>
 <div>
-ISAC MODS TV<br>
-<span>Canal parceiro</span>
+ISAC MODS TV
 </div>
 </div>
 <i class="fa-solid fa-arrow-right"></i>
 </a>
 
-<a class="link" href="https://youtube.com/@fantasma_modz2?si=9wWO3moFrudu0uuG" target="_blank">
+<a class="link" onclick="clickSound()" href="https://youtube.com/@fantasma_modz2" target="_blank">
 <div class="left">
 <div class="icon"><i class="fa-brands fa-youtube"></i></div>
 <div>
-Fantasma MODZ<br>
-<span>Canal Fantasma</span>
+Fantasma MODZ
 </div>
 </div>
 <i class="fa-solid fa-arrow-right"></i>
 </a>
 
-<a class="link" href="https://whatsapp.com/channel/0029VbCNHfs2kNFyhlqfT72X" target="_blank">
+<a class="link" onclick="clickSound()" href="https://whatsapp.com/channel/0029VbCNHfs2kNFyhlqfT72X" target="_blank">
 <div class="left">
 <div class="icon"><i class="fa-brands fa-whatsapp"></i></div>
 <div>
-Comunidade BRUXO MODZ<br>
-<span>Canal WhatsApp</span>
+Comunidade BRUXO MODZ
 </div>
 </div>
 <i class="fa-solid fa-arrow-right"></i>
 </a>
 
-<a class="link" href="https://chat.whatsapp.com/Bye9CWnyog5CggS0y6RxXA?mode=gi_t" target="_blank">
+<a class="link" onclick="clickSound()" href="https://chat.whatsapp.com/Bye9CWnyog5CggS0y6RxXA" target="_blank">
 <div class="left">
 <div class="icon"><i class="fa-solid fa-users"></i></div>
 <div>
-Comunidade Fantasma MODZ<br>
-<span>Grupo exclusivo</span>
+Grupo Fantasma MODZ
 </div>
 </div>
 <i class="fa-solid fa-arrow-right"></i>
@@ -315,17 +279,61 @@ Criado por <span>BRUXO MODZ</span>
 
 </div>
 
+<!-- MENU FLUTUANTE -->
+
+<div class="float-container">
+
+<div class="float-menu" id="menu">
+
+<a onclick="clickSound()" href="https://t.me/RATEXMODS" target="_blank" class="float-item telegram">
+<i class="fa-brands fa-telegram"></i> Telegram
+</a>
+
+<a onclick="clickSound()" href="https://instagram.com/bruxomodz" target="_blank" class="float-item instagram">
+<i class="fa-brands fa-instagram"></i> Instagram
+</a>
+
+</div>
+
+<div class="float-btn" onclick="toggleMenu();clickSound();">
+<i class="fa-solid fa-plus"></i>
+</div>
+
+</div>
+
 <script>
 
-window.onload=function(){
+/* SOM ENTRAR */
 
-document.getElementById("hackSound").play();
+window.onload=function(){
+document.getElementById("enterSound").play();
 
 setTimeout(function(){
 document.getElementById("alert").style.display="none";
 },3000);
+}
+
+/* SOM CLICK */
+
+function clickSound(){
+document.getElementById("clickSound").play();
+}
+
+/* MENU */
+
+function toggleMenu(){
+
+let menu=document.getElementById("menu");
+
+if(menu.style.display==="flex"){
+menu.style.display="none";
+}else{
+menu.style.display="flex";
+}
 
 }
+
+/* MATRIX */
 
 const canvas=document.getElementById("matrix");
 const ctx=canvas.getContext("2d");
